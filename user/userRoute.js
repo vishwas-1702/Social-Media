@@ -8,6 +8,6 @@ router.get('/profile/:username', protectRoute,getUserProfile)
 router.get('/suggested',protectRoute, getSuggestedUsers)
 router.post('/follow/:id', protectRoute ,followunfollowUser)
 router.put('/updateMe', protectRoute ,updateUser)
-
+//test
 
 export default router;
