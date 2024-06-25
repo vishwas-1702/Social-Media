@@ -23,30 +23,10 @@ const app = express();
 
 
 
-app.get('/api/example', (req, res) => {
-  // console.log(`Received a GET request on /api/example`);
-  res.send('This is an example route');
-});
-app.use(morgan('combined', { stream: { write: (message) => logger.info(message) } }));
-app.use(express.json());
-app.use(helmet());
 
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", 'trusted-cdn.com'],
-      // Add more directives as needed
-    },
-  })
-);
+
 const PORT = process.env.PORT || 5000;
-app.all('*', (req, res) => {
-  res.status(500).json({
-    statusCode: 500,
-    message: "Invalid Route"
-  });
-});
+
 
 const logDirectory = './logs';
 
@@ -80,7 +60,7 @@ app.use(express.json());
 app.use("/social/auth", signUp);
 app.use("/social/users", userRoutes);
 app.use("/social/posts", postRoutes);
-app.use("/social/notifications",notificationRoutes);
+app.use("/social/notifications/test",notificationRoutes);
 
 
 app.listen(PORT, () => {
